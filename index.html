@@ -902,8 +902,45 @@
             // Mobile menu toggle would go here
         });
     </script>
+
+	<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Keep your existing modal/nav code here ...
+
+    // FAQ accordion logic
+    const faqButtons = document.querySelectorAll('.space-y-4 button');
+
+    faqButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('i');
+
+            // Close all other answers first
+            document.querySelectorAll('.space-y-4 div.mt-2').forEach(div => {
+                if (div !== answer) {
+                    div.classList.add('hidden');
+                }
+            });
+
+            // Reset all icons
+            document.querySelectorAll('.space-y-4 button i').forEach(i => {
+                if (i !== icon) {
+                    i.classList.remove('rotate-180');
+                }
+            });
+
+            // Toggle the clicked one
+            answer.classList.toggle('hidden');
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
+
 
 
 
